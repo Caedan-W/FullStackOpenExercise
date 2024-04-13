@@ -1,0 +1,4 @@
+npm create vite@latest {dir_name} -- --template react
+cd $dir_name
+npm install
+npm run dev
