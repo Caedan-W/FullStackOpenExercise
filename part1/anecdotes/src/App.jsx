@@ -44,7 +44,7 @@ const App = () => {
   const getIndexOfAnecdoteWithMostVotes = (votes) => {
     let indexOfMax = 0;
     let max = votes[0];
-    
+  
     for (let i = 1; i < votes.length; i++) {
       if (votes[i] > max) {
         max = votes[i];
@@ -53,6 +53,7 @@ const App = () => {
     }
     return indexOfMax 
   }
+
 
 //reduce方法，找到数组最大元素的索引  
 /*
