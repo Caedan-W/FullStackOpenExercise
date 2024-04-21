@@ -105,7 +105,7 @@ const App = () => {
 
   const handleFilterInput = (event) => {
     setFilterInput(event.target.value)
-    console.log('new filter input:', event.target.value)
+    //console.log('new filter input:', event.target.value)
     //console.log('filter completed!')
   }
 
