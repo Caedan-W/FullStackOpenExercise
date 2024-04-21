@@ -19,7 +19,8 @@ const Footer = () => {
 }
 
 const App = () => {
-  const [notes, setNotes] = useState(null)
+  //你也可以在 useState 钩子中将 notes 的初始值设为一个空数组，这样 notes 就永远不会是 null 或者 undefined：
+  const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('a new note...')
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState('some error happened...')
