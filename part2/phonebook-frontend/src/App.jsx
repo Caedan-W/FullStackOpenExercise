@@ -6,21 +6,34 @@ import Persons from './components/Persons'
 import Notification from './components/Notification'
 
 
+
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filterInput, setFilterInput] = useState('')
-  const [successMessage, setSuccessMessage] = useState(null)
+  const [notificationMessage, setNotificationMessage] = useState(null)
+  const [notificationType, setNotificationType] = useState('success')
 
   const personsToShow = persons.filter(person => person.name.toLowerCase().includes(filterInput.toLowerCase()))
 
-  const changeSuccessMessage = (message) => {
-    setSuccessMessage(
-      message
+  const changeSuccessMessage = (successMessage) => {
+    setNotificationMessage(
+      successMessage
     )
+    setNotificationType('success')
     setTimeout(() => {
-      setSuccessMessage(null)
+      setNotificationMessage(null)
+    }, 3000)
+  }
+
+  const changeFailMessage = (failMessage) => {
+    setNotificationMessage(
+      failMessage
+    )
+    setNotificationType('error')
+    setTimeout(() => {
+      setNotificationMessage(null)
     }, 3000)
   }
 
@@ -46,7 +59,7 @@ const App = () => {
         changeSuccessMessage(`Updated ${newName}'s number`)
       })
       .catch(error => {
-        changeSuccessMessage(`Information of '${personToChange.name}' has already been deleted from server`)
+        changeFailMessage(`Information of '${personToChange.name}' has already been deleted from server`)
         setPersons(persons.filter(person => person.id !== personToChange.id))
         setNewName('')
         setNewNumber('')
@@ -71,8 +84,14 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
+          changeSuccessMessage(`Added ${newName}`)
         })
-      changeSuccessMessage(`Added ${newName}`)
+        .catch(error => {
+          // this is the way to access the error message
+          changeFailMessage(error.response.data.error)
+          console.log(error.response.data.error)
+        })
+      
     }
   }
   
@@ -119,7 +138,7 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
-      <Notification message={successMessage} />
+      <Notification message={notificationMessage} type={notificationType}/>
       <Filter value={filterInput} onChange={handleFilterInput} />
 
       <h2>Add a new</h2>
