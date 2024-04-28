@@ -1,0 +1,11 @@
+POST http://localhost:3001/api/blogs/ 
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY2MmM2OTQyNDM1MTU5NWMwMDI4MzQ0NCIsImlhdCI6MTcxNDI2NTI1Mn0.fWzjSbEnDuPbUAp8qgNH4SnrFbmXGRmKG3Lw-KU3E2g
+
+{
+  "title": "BLOGBLOG3",
+  "author": "BLOGMAN3",
+  "url": "BLOGURL3",
+  "likes": 30000,
+  "user": "662c69424351595c00283444"
+}

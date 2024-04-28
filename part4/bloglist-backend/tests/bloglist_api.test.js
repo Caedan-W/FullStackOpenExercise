@@ -121,7 +121,7 @@ test('title or url properties are missing, responds with the status code 400', a
 })
 
 
-test.only('deletion of a blog post', async () => {
+test('deletion of a blog post', async () => {
   const blogsAtStart = await helper.blogsInDb()
   const blogToDelete = blogsAtStart[0]
 
@@ -137,7 +137,7 @@ test.only('deletion of a blog post', async () => {
 })
 
 
-test.only('updating the amount of likes for a blog post', async () => {
+test('updating the amount of likes for a blog post', async () => {
   const blogsAtStart = await helper.blogsInDb()
   const blogToUpdate = blogsAtStart[0]
 
