@@ -2,14 +2,15 @@ const BlogDetails = ({ blog, handleLike, handleRemove }) => {
   return (
     <div>
       <a href={blog && blog.url}>{blog.url}</a>
-      <p>{blog.likes} likes <button onClick={handleLike}>like</button></p>
+      <p>{blog.likes} likes <button onClick={()=>handleLike(blog)}>like</button></p>
       <p>{blog.author}</p>
-      <button onClick={handleRemove}>remove</button>
+      <button onClick={() => handleRemove(blog.id)}>remove</button>
     </div>
   )
 }
 
 const Blog = ({ blog, blogDetailsVisible, setBlogDetailsVisible, handleLike, handleRemove }) => {
+
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,

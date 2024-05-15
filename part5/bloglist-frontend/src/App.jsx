@@ -139,8 +139,6 @@ const App = () => {
     }
   }
 
-  const sortedBlogs = [...blogs].sort((a, b) => b.likes - a.likes)
-  const blogsToRender = sorted ? sortedBlogs : blogs
 
   const handleRemove = async (id) => {
     try{
@@ -159,6 +157,8 @@ const App = () => {
     }
   }
 
+  const sortedBlogs = [...blogs].sort((a, b) => b.likes - a.likes)
+  const blogsToRender = sorted ? sortedBlogs : blogs
 
   return (
     <div>
@@ -200,8 +200,8 @@ const App = () => {
                 blog={blog}
                 blogDetailsVisible={blogDetailsVisible}
                 setBlogDetailsVisible={setBlogDetailsVisible}
-                handleLike={() => handleLike(blog)}
-                handleRemove={() => handleRemove(blog.id)}
+                handleLike={handleLike}
+                handleRemove={handleRemove}
               />
             )}
           </div>
